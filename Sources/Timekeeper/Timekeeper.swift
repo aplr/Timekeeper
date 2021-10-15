@@ -137,16 +137,18 @@ extension Timekeeper {
     
     private func print(measurement: Measurement) {
         var items: [String] = [
-            "\(self)",
-            "[\(measurement)] - ",
-            "Total: \(measurement.totalDuration)s"
+            "\(self)[\(measurement)]"
         ]
         
         if measurement.lapTimes.count > 1, let latestLap = measurement.lapTimes.last {
-            items.insert("Lap #\(measurement.lapTimes.endIndex): \(latestLap)s - ", at: 2)
+            items.append("Lap #\(measurement.lapTimes.endIndex): \(latestLap)s")
         }
         
-        debugPrint(items)
+        if let totalDuration = measurement.totalDuration {
+            items.append("Total: \(totalDuration)s")
+        }
+        
+        debugPrint(items, separator: " - ")
     }
     
 }
