@@ -23,7 +23,7 @@
         <a class="header-link" href="../index.html">
           Timekeeper Docs
         </a>
-         (91% documented)
+         (93% documented)
       </p>
     
       <div class="header-col--secondary">
@@ -240,7 +240,7 @@ It is <code>nil</code> if the measurement was not stopped.</p>
                       <div class="abstract">
                         <p>A list of laps. Each lap item describes the absolute time
 it was added. If you want the deltas between each
-measurement points, look at <code>lapTimes</code> instead.</p>
+measurement points, look at <code><a href="../Structs/Measurement.html#/s:10Timekeeper11MeasurementV8lapTimesSaySdGvp">lapTimes</a></code> instead.</p>
 
                       </div>
                       <div class="declaration">
@@ -257,9 +257,9 @@ measurement points, look at <code>lapTimes</code> instead.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s23CustomStringConvertibleP11descriptionSSvp"></a>
-                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s23CustomStringConvertibleP11descriptionSSvp">description</a>
+                    <a name="/s:10Timekeeper11MeasurementV13totalDurationSdSgvp"></a>
+                    <a name="//apple_ref/swift/Property/totalDuration" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10Timekeeper11MeasurementV13totalDurationSdSgvp">totalDuration</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -267,7 +267,171 @@ measurement points, look at <code>lapTimes</code> instead.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>The total duration of the measurement.
+Returns <code>nil</code> if the measurement was not stopped.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">totalDuration</span><span class="p">:</span> <span class="kt">Double</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Lap%20Times"></a>
+                <a name="//apple_ref/swift/Section/Lap Times" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Lap%20Times"></a>
+                  <h3 class="section-name"><span>Lap Times</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10Timekeeper11MeasurementV8lapTimesSaySdGvp"></a>
+                    <a name="//apple_ref/swift/Property/lapTimes" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10Timekeeper11MeasurementV8lapTimesSaySdGvp">lapTimes</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A list of deltas between all measurement points.
+This includes start, end and all intermediate laps.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">lapTimes</span><span class="p">:</span> <span class="p">[</span><span class="kt">Double</span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10Timekeeper11MeasurementV14lapTimeAverageSdvp"></a>
+                    <a name="//apple_ref/swift/Property/lapTimeAverage" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10Timekeeper11MeasurementV14lapTimeAverageSdvp">lapTimeAverage</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The average of all lap times.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">lapTimeAverage</span><span class="p">:</span> <span class="kt">Double</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10Timekeeper11MeasurementV13lapTimeMedianSdSgvp"></a>
+                    <a name="//apple_ref/swift/Property/lapTimeMedian" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10Timekeeper11MeasurementV13lapTimeMedianSdSgvp">lapTimeMedian</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The median of all lap times.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">lapTimeMedian</span><span class="p">:</span> <span class="kt">Double</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10Timekeeper11MeasurementV15lapTimeVarianceSdSgvp"></a>
+                    <a name="//apple_ref/swift/Property/lapTimeVariance" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10Timekeeper11MeasurementV15lapTimeVarianceSdSgvp">lapTimeVariance</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The variance of all lap times.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">lapTimeVariance</span><span class="p">:</span> <span class="kt">Double</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Custom%20String%20Convertible%20Conformance"></a>
+                <a name="//apple_ref/swift/Section/Custom String Convertible Conformance" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Custom%20String%20Convertible%20Conformance"></a>
+                  <h3 class="section-name"><span>Custom String Convertible Conformance</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10Timekeeper11MeasurementV11descriptionSSvp"></a>
+                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10Timekeeper11MeasurementV11descriptionSSvp">description</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A textual representation of the measurement.</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
