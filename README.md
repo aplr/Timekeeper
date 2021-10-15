@@ -46,7 +46,7 @@ Timekeeper.shared.stop(print: "measurement")
 Timekeeper.shared.start("measurement")
 
 // Add a new lap and return the measurement
-let measurement = Timekeeper.shared.lap("measurements")
+let measurement = Timekeeper.shared.lap("measurement")
 
 // Stop the timer and return the measurement
 let measurement = Timekeeper.shared.stop("measurement")
