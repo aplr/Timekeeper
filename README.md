@@ -54,7 +54,7 @@ let measurement = Timekeeper.shared.stop("measurement")
 
 ## Documentation
 
-Documentation is available [here](https://timekeeper.aplr.io) and provides a comprehensive documentation of the library's public interface. Expect usage examples and guides to be added shortly. For now, have a look at the demo app in the *Example* directory.
+Documentation is available [here](https://timekeeper.aplr.io) and provides a comprehensive documentation of the library's public interface.
 
 ## License
 Timekeeper is licensed under the [MIT License](https://github.com/aplr/Timekeeper/blob/main/LICENSE).
