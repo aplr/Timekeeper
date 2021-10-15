@@ -43,6 +43,8 @@ public struct Measurement: CustomStringConvertible {
     public var totalDuration: Double? {
         end.map({ $0 - start })
     }
+
+    // MARK: - Lap Times
     
     /// A list of deltas between all measurement points.
     /// This includes start, end and all intermediate laps.
@@ -69,7 +71,7 @@ public struct Measurement: CustomStringConvertible {
         return lapTimes.reduce(0, { $0 + pow($1 - median, 2) }) / Double(lapTimes.count - 1)
     }
     
-
+    // MARK: - Custom String Convertible Conformance
 
     /// A textual representation of the measurement.
     public var description: String {
