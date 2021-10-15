@@ -1,5 +1,5 @@
 <h1>
-    <img src="https://raw.githubusercontent.com/aplr/Timekeeper/main/Timekeeper.png" height="23" />
+    <img src="https://raw.githubusercontent.com/aplr/Timekeeper/main/Logo.png" height="23" />
     Timekeeper
 </h1>
 
