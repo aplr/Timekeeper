@@ -7,9 +7,10 @@
 
 import Foundation
 
-///
+/// A time measurement class allowing to keep track of the duration of code.
 public class Timekeeper {
-
+    
+    /// The default timekeeper instance
     public static let `default` = Timekeeper("default")
     
     /// The name of this timekeeper. Used for identifying in the logs.
@@ -18,9 +19,12 @@ public class Timekeeper {
     /// The lock used for synchronizing access to the underlying dict.
     var lock = pthread_rwlock_t()
     
-    /// All stored measurements
+    /// The dictionary storing all current measurements
     var measurements = [Measurement.Name: Measurement]()
     
+    /// Creates a new Timekeeper instance with the specified label.
+    ///
+    /// - Parameter label: The name of the timekeeper instance
     init(_ label: String) {
         self.label = label
         
@@ -31,6 +35,9 @@ public class Timekeeper {
         pthread_rwlock_destroy(&lock)
     }
     
+    /// Accesses the measurement with the specified name.
+    ///
+    /// - Parameter name: The name of the measurement
     public subscript(_ name: Measurement.Name) -> Measurement? {
         lockRead()
         defer { unlock() }
@@ -43,6 +50,13 @@ public class Timekeeper {
 
 extension Timekeeper {
     
+    /// Starts a new measurement, setting the start time to the current
+    /// system absolute time using `CFAbsoluteTimeGetCurrent`.
+    /// If there was a measurement with this name before, it is replaced
+    /// by a new one.
+    ///
+    /// - Parameter name: The name of the measurement
+    /// - Returns: The measurement
     @discardableResult
     public func start(_ name: Measurement.Name) -> Measurement {
         lockWrite()
@@ -55,6 +69,11 @@ extension Timekeeper {
         return measurement
     }
     
+    /// Adds a lap to the measurement, if one exists with the specified name.
+    /// Otherwise, the function will just return nil.
+    ///
+    /// - Parameter name: The name of the measurement
+    /// - Returns: The measurement
     @discardableResult
     public func lap(_ name: Measurement.Name) -> Measurement? {
         lockWrite()
@@ -69,6 +88,11 @@ extension Timekeeper {
         return measurement
     }
     
+    /// Sets the end time on the measurement if one exists with the specified name,
+    /// removes it from the timekeeper instance and returns it.
+    ///
+    /// - Parameter name: The name of the measurement
+    /// - Returns: The meausrement
     @discardableResult
     public func stop(_ name: Measurement.Name) -> Measurement? {
         lockWrite()
@@ -87,6 +111,9 @@ extension Timekeeper {
 
 extension Timekeeper {
     
+    /// Adds a lap to the measurement and prints it, if there exists one with the specified name.
+    ///
+    /// - Parameter name: The name of the measurement
     public func lap(print name: Measurement.Name) {
         guard let measurement = lap(name) else {
             debugPrint("No measurement with name \(name) found.")
@@ -96,6 +123,9 @@ extension Timekeeper {
         print(measurement: measurement)
     }
     
+    /// Sets the end time on the measurement and prints it, if there exists one with the specified name.
+    ///
+    /// - Parameter name: The name of the measurement
     public func stop(print name: Measurement.Name) {
         guard let measurement = stop(name) else {
             debugPrint("No measurement with name \(name) found.")
@@ -125,6 +155,10 @@ extension Timekeeper {
 
 extension Timekeeper {
     
+    /// Sets the end time on all current measurements, removes them
+    /// from the timekeeper instance and returns them.
+    ///
+    /// - Returns: All stopped measurements
     @discardableResult
     public func stopAll() -> [Measurement] {
         lockWrite()
@@ -143,10 +177,13 @@ extension Timekeeper {
         return measurements
     }
     
+    /// Sets the end time on all current measurements, removes them
+    /// from the time keeper and print all of them.
     public func stopAllPrint() {
         stopAll().forEach { print(measurement: $0) }
     }
     
+    /// Remove all current measurements from the timekeeper.
     public func clear() {
         lockWrite()
         defer { unlock() }
