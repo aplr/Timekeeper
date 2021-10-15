@@ -40,35 +40,38 @@ public struct Measurement: CustomStringConvertible {
     
     /// The total duration of the measurement.
     /// Returns `nil` if the measurement was not stopped.
-    var totalDuration: Double? {
+    public var totalDuration: Double? {
         end.map({ $0 - start })
     }
     
     /// A list of deltas between all measurement points.
     /// This includes start, end and all intermediate laps.
-    var lapTimes: [Double] {
+    public var lapTimes: [Double] {
         (laps + [end]).compactMap({ $0 }).reduce(([], start)) {
             ($0.0 + [$1 - $0.1], $1)
         }.0
     }
     
     /// The average of all lap times.
-    var lapTimeAverage: Double {
+    public var lapTimeAverage: Double {
         lapTimes.average
     }
     
     /// The median of all lap times.
-    var lapTimeMedian: Double? {
+    public var lapTimeMedian: Double? {
         lapTimes.median
     }
     
     /// The variance of all lap times.
-    var lapTimeVariance: Double? {
+    public var lapTimeVariance: Double? {
         guard let median = lapTimeMedian else { return nil }
         
         return lapTimes.reduce(0, { $0 + pow($1 - median, 2) }) / Double(lapTimes.count - 1)
     }
     
+
+
+    /// A textual representation of the measurement.
     public var description: String {
         name
     }
