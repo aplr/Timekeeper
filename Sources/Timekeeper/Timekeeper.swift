@@ -195,10 +195,11 @@ extension Timekeeper {
     
 }
 
-// MARK: - Custom String Convertible Conformation
+// MARK: - Custom String Convertible Conformance
 
 extension Timekeeper: CustomStringConvertible {
     
+    /// A textual representation of the timekeeper.
     public var description: String {
         "Timekeeper[\(label)]"
     }
