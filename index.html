@@ -1,138 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Timekeeper  Reference</title>
-    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
-    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
-    <meta charset="utf-8">
-    <script src="js/jquery.min.js" defer></script>
-    <script src="js/jazzy.js" defer></script>
-    
-    <script src="js/lunr.min.js" defer></script>
-    <script src="js/typeahead.jquery.js" defer></script>
-    <script src="js/jazzy.search.js" defer></script>
-  </head>
-  <body>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="icon" href="/favicon.ico"><link rel="mask-icon" href="/favicon.svg" color="#333333"><title>Documentation</title><link href="/css/documentation-topic.9689e104.css" rel="prefetch"><link href="/css/documentation-topic~topic~tutorials-overview.83d60fd4.css" rel="prefetch"><link href="/css/topic.71a5a916.css" rel="prefetch"><link href="/css/tutorials-overview.7d1da3df.css" rel="prefetch"><link href="/js/chunk-2d0d3105.459bf725.js" rel="prefetch"><link href="/js/documentation-topic.d0b0a554.js" rel="prefetch"><link href="/js/documentation-topic~topic~tutorials-overview.e7243158.js" rel="prefetch"><link href="/js/highlight-js-bash.85a55401.js" rel="prefetch"><link href="/js/highlight-js-c.99b899e6.js" rel="prefetch"><link href="/js/highlight-js-cpp.46268241.js" rel="prefetch"><link href="/js/highlight-js-css.c12e29c1.js" rel="prefetch"><link href="/js/highlight-js-custom-markdown.fb3d4662.js" rel="prefetch"><link href="/js/highlight-js-custom-swift.b1f7a896.js" rel="prefetch"><link href="/js/highlight-js-diff.672514df.js" rel="prefetch"><link href="/js/highlight-js-http.ec39e120.js" rel="prefetch"><link href="/js/highlight-js-java.a814d7f9.js" rel="prefetch"><link href="/js/highlight-js-javascript.4d4a362d.js" rel="prefetch"><link href="/js/highlight-js-json.471128d2.js" rel="prefetch"><link href="/js/highlight-js-llvm.ddaa176e.js" rel="prefetch"><link href="/js/highlight-js-markdown.451c845b.js" rel="prefetch"><link href="/js/highlight-js-objectivec.bcdf5156.js" rel="prefetch"><link href="/js/highlight-js-perl.b3c5d3f2.js" rel="prefetch"><link href="/js/highlight-js-php.cc8d6c27.js" rel="prefetch"><link href="/js/highlight-js-python.b6226703.js" rel="prefetch"><link href="/js/highlight-js-ruby.fb547e8d.js" rel="prefetch"><link href="/js/highlight-js-scss.33a3a3f7.js" rel="prefetch"><link href="/js/highlight-js-swift.0e0d0e76.js" rel="prefetch"><link href="/js/highlight-js-xml.784eb41b.js" rel="prefetch"><link href="/js/topic.cd2c44f5.js" rel="prefetch"><link href="/js/tutorials-overview.db178ab9.js" rel="prefetch"><link href="/css/index.7bb6526a.css" rel="preload" as="style"><link href="/js/chunk-vendors.779cfe0d.js" rel="preload" as="script"><link href="/js/index.2b1836ed.js" rel="preload" as="script"><link href="/css/index.7bb6526a.css" rel="stylesheet"></head><body><noscript><style>.noscript {
+  font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue",Helvetica,Arial,sans-serif;
+  margin: 92px auto 140px auto;
+  text-align: center;
+  width: 980px;
+}
 
+.noscript-title {
+  color: #111;
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: -.003em;
+  line-height: 1.08365;
+  margin: 0 auto 54px auto;
+  width: 502px;
+}
 
-    <a title="Timekeeper  Reference"></a>
+@media only screen and (max-width: 1068px) {
+  .noscript {
+    margin: 90px auto 120px auto;
+    width: 692px;
+  }
 
-    <header class="header">
-      <p class="header-col header-col--primary">
-        <a class="header-link" href="index.html">
-          Timekeeper Docs
-        </a>
-         (93% documented)
-      </p>
-    
-      <div class="header-col--secondary">
-        <form role="search" action="search.json">
-          <input type="text" placeholder="Search documentation" data-typeahead>
-        </form>
-      </div>
-    
-        <p class="header-col header-col--secondary">
-          <a class="header-link" href="https://github.com/aplr/Timekeeper">
-            <img class="header-icon" src="img/gh.png" alt="GitHub"/>
-            View on GitHub
-          </a>
-        </p>
-    
-    </header>
+  .noscript-title {
+    font-size: 40px;
+    letter-spacing: 0;
+    line-height: 1.1;
+    margin: 0 auto 45px auto;
+    width: 420px;
+  }
+}
 
-    <p class="breadcrumbs">
-      <a class="breadcrumb" href="index.html">Timekeeper Reference</a>
-      <img class="carat" src="img/carat.png" alt=""/>
-      Timekeeper  Reference
-    </p>
+@media only screen and (max-width: 735px) {
+  .noscript {
+    margin: 45px auto 60px auto;
+    width: 87.5%;
+  }
 
-    <div class="content-wrapper">
-      <nav class="navigation">
-        <ul class="nav-groups">
-          <li class="nav-group-name">
-            <a class="nav-group-name-link" href="Classes.html">Classes</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/Timekeeper.html">Timekeeper</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a class="nav-group-name-link" href="Structs.html">Structures</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Structs/Measurement.html">Measurement</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-      <article class="main-content">
+  .noscript-title {
+    font-size: 32px;
+    letter-spacing: .004em;
+    line-height: 1.125;
+    margin: 0 auto 35px auto;
+    max-width: 330px;
+    width: auto;
+  }
+}
 
-        <section class="section">
-          <div class="section-content top-matter">
-            
-            <h1>
-    <img src="https://raw.githubusercontent.com/aplr/Timekeeper/main/Logo.png" height="23" />
-    Timekeeper
-</h1>
-
-<p><img src="https://github.com/aplr/Timekeeper/workflows/Build/badge.svg?branch=main" alt="Build">
-<img src="https://github.com/aplr/Timekeeper/workflows/Documentation/badge.svg" alt="Documentation"></p>
-
-<p>Timekeeper is an easy-to-use time measurement library written in Swift, with support for iOS, tvOS, watchOS and macOS.</p>
-<h2 id='installation' class='heading'>Installation</h2>
-
-<p>Timekeeper is available via the <a href="https://swift.org/package-manager/">Swift Package Manager</a> which is a tool for managing the distribution of Swift code. It’s integrated with the Swift build system and automates the process of downloading, compiling, and linking dependencies.</p>
-
-<p>Once you have your Swift package set up, adding Timekeeper as a dependency is as easy as adding it to the dependencies value of your Package.swift.</p>
-<pre class="highlight swift"><code><span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
-    <span class="o">.</span><span class="nf">package</span><span class="p">(</span>
-        <span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/aplr/Timekeeper.git"</span><span class="p">,</span>
-        <span class="o">.</span><span class="nf">upToNextMajor</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="s">"0.0.1"</span><span class="p">)</span>
-    <span class="p">)</span>
-<span class="p">]</span>
-</code></pre>
-<h2 id='usage' class='heading'>Usage</h2>
-<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Timekeeper</span>
-
-<span class="c1">// Start a new measurement</span>
-<span class="kt">Timekeeper</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">start</span><span class="p">(</span><span class="s">"measurement"</span><span class="p">)</span>
-
-<span class="c1">// Print the elapsed time since start</span>
-<span class="kt">Timekeeper</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">lap</span><span class="p">(</span><span class="nv">print</span><span class="p">:</span> <span class="s">"measurement"</span><span class="p">)</span>
-
-<span class="c1">// Print the elapsed time since the last lap</span>
-<span class="kt">Timekeeper</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">lap</span><span class="p">(</span><span class="nv">print</span><span class="p">:</span> <span class="s">"measurement"</span><span class="p">)</span>
-
-<span class="c1">// Print the elapsed time since the last lap and start and clears the measurement</span>
-<span class="kt">Timekeeper</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">stop</span><span class="p">(</span><span class="nv">print</span><span class="p">:</span> <span class="s">"measurement"</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight swift"><code><span class="c1">// Start a new measurement</span>
-<span class="kt">Timekeeper</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">start</span><span class="p">(</span><span class="s">"measurement"</span><span class="p">)</span>
-
-<span class="c1">// Add a new lap and return the measurement</span>
-<span class="k">let</span> <span class="nv">measurement</span> <span class="o">=</span> <span class="kt">Timekeeper</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">lap</span><span class="p">(</span><span class="s">"measurement"</span><span class="p">)</span>
-
-<span class="c1">// Stop the timer and return the measurement</span>
-<span class="k">let</span> <span class="nv">measurement</span> <span class="o">=</span> <span class="kt">Timekeeper</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">stop</span><span class="p">(</span><span class="s">"measurement"</span><span class="p">)</span>
-</code></pre>
-<h2 id='documentation' class='heading'>Documentation</h2>
-
-<p>Documentation is available <a href="https://timekeeper.aplr.io">here</a> and provides a comprehensive documentation of the library&rsquo;s public interface.</p>
-<h2 id='license' class='heading'>License</h2>
-
-<p>Timekeeper is licensed under the <a href="https://github.com/aplr/Timekeeper/blob/main/LICENSE">MIT License</a>.</p>
-
-          </div>
-        </section>
-
-
-      </article>
-    </div>
-    <section class="footer">
-      <p>&copy; 2021 <a class="link" href="https://github.com/aplr" target="_blank" rel="external noopener">Andreas Pfurtscheller</a>. All rights reserved. (Last updated: 2021-10-15)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
-    </section>
-  </body>
-</html>
+#loading-placeholder {
+  display: none;
+};</style><div class="noscript"><h1 class="noscript-title">This page requires JavaScript.</h1><p>Please turn on JavaScript in your browser and refresh the page to view its content.</p></div></noscript><div id="app"></div><script src="/js/chunk-vendors.779cfe0d.js"></script><script src="/js/index.2b1836ed.js"></script></body></html>
