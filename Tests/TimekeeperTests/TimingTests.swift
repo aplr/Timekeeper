@@ -47,7 +47,7 @@ final class TimingTests: XCTestCase {
         timing.stop()
         
         XCTAssertEqual(timing.lapTimes.count, 1)
-        XCTAssertEqual(timing.lapTimes[0], 1, accuracy: 0.1)
+        XCTAssertEqual(timing.lapTimes[0], 1, accuracy: 0.5)
     }
     
     func testLapTimesContainsTwoItemsWhenStoppedWithOneLap() {
@@ -62,8 +62,8 @@ final class TimingTests: XCTestCase {
         timing.stop()
         
         XCTAssertEqual(timing.lapTimes.count, 2)
-        XCTAssertEqual(timing.lapTimes[0], 1, accuracy: 0.1)
-        XCTAssertEqual(timing.lapTimes[1], 1, accuracy: 0.1)
+        XCTAssertEqual(timing.lapTimes[0], 1, accuracy: 0.5)
+        XCTAssertEqual(timing.lapTimes[1], 1, accuracy: 0.5)
     }
     
     func testTotalDurationIsNilWhenRunning() {
