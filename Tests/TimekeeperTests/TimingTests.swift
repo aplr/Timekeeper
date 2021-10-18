@@ -42,28 +42,28 @@ final class TimingTests: XCTestCase {
     func testLapTimesContainsOneItemWhenStoppedWithoutLaps() {
         var timing = Timing("measurement")
         
-        Thread.sleep(forTimeInterval: 0.1)
+        Thread.sleep(forTimeInterval: 1)
         
         timing.stop()
         
         XCTAssertEqual(timing.lapTimes.count, 1)
-        XCTAssertEqual(timing.lapTimes[0], 0.1, accuracy: 0.01)
+        XCTAssertEqual(timing.lapTimes[0], 1, accuracy: 0.1)
     }
     
     func testLapTimesContainsTwoItemsWhenStoppedWithOneLap() {
         var timing = Timing("measurement")
                 
-        Thread.sleep(forTimeInterval: 0.1)
+        Thread.sleep(forTimeInterval: 1)
         
         timing.lap()
                 
-        Thread.sleep(forTimeInterval: 0.1)
+        Thread.sleep(forTimeInterval: 1)
         
         timing.stop()
         
         XCTAssertEqual(timing.lapTimes.count, 2)
-        XCTAssertEqual(timing.lapTimes[0], 0.1, accuracy: 0.01)
-        XCTAssertEqual(timing.lapTimes[1], 0.1, accuracy: 0.01)
+        XCTAssertEqual(timing.lapTimes[0], 1, accuracy: 0.1)
+        XCTAssertEqual(timing.lapTimes[1], 1, accuracy: 0.1)
     }
     
     func testTotalDurationIsNilWhenRunning() {
