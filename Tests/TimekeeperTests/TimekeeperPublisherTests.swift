@@ -35,7 +35,7 @@ final class TimekeeperPublisherTests: XCTestCase {
             .fulfill(expectation: expectation)
             .store(in: &cancellables)
         
-        wait(for: [expectation], timeout: 0.2)
+        wait(for: [expectation], timeout: 0.5)
         
         guard let timing = timing else {
             return XCTFail()
@@ -54,7 +54,7 @@ final class TimekeeperPublisherTests: XCTestCase {
             .fulfill(expectation: expectation)
             .store(in: &cancellables)
         
-        wait(for: [expectation], timeout: 0.2)
+        wait(for: [expectation], timeout: 0.5)
         
         guard let timing = timing else {
             return XCTFail()
@@ -71,7 +71,7 @@ final class TimekeeperPublisherTests: XCTestCase {
             .fulfill(expectation: expectation)
             .store(in: &cancellables)
         
-        wait(for: [expectation], timeout: 0.2)
+        wait(for: [expectation], timeout: 0.5)
         
         guard let timing = Timekeeper.default["measurement"] else {
             return XCTFail()
@@ -92,7 +92,7 @@ final class TimekeeperPublisherTests: XCTestCase {
             .fulfill(expectation: expectation)
             .store(in: &cancellables)
         
-        wait(for: [expectation], timeout: 0.2)
+        wait(for: [expectation], timeout: 0.5)
         
         guard let timing = timing else {
             return XCTFail()
@@ -115,7 +115,7 @@ final class TimekeeperPublisherTests: XCTestCase {
             .fulfill(expectation: expectation)
             .store(in: &cancellables)
         
-        wait(for: [expectation], timeout: 0.2)
+        wait(for: [expectation], timeout: 0.5)
         
         guard let timing = timing, let lapTiming = lapTiming else {
             return XCTFail()
@@ -141,7 +141,7 @@ final class TimekeeperPublisherTests: XCTestCase {
             .fulfill(expectation: expectation)
             .store(in: &cancellables)
         
-        wait(for: [expectation], timeout: 0.2)
+        wait(for: [expectation], timeout: 0.5)
         
         guard let timing = timing else {
             return XCTFail()
@@ -167,7 +167,7 @@ final class TimekeeperPublisherTests: XCTestCase {
             .fulfill(expectation: expectation)
             .store(in: &cancellables)
         
-        wait(for: [expectation], timeout: 0.2)
+        wait(for: [expectation], timeout: 0.5)
         
         guard let timing = timing, let lapTiming = lapTiming else {
             return XCTFail()
@@ -192,7 +192,7 @@ final class TimekeeperPublisherTests: XCTestCase {
             .fulfill(expectation: expectation)
             .store(in: &cancellables)
         
-        wait(for: [expectation], timeout: 0.2)
+        wait(for: [expectation], timeout: 0.5)
         
         guard let error = error as? Timekeeper.Error else {
             return XCTFail()
@@ -215,7 +215,7 @@ final class TimekeeperPublisherTests: XCTestCase {
             .fulfill(expectation: expectation)
             .store(in: &cancellables)
         
-        wait(for: [expectation], timeout: 0.2)
+        wait(for: [expectation], timeout: 0.5)
         
         guard let error = error as? Timekeeper.Error else {
             return XCTFail()
