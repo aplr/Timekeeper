@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// A time measurement class allowing to keep track of the duration of code.
+/// A timing class allowing to keep track of the duration of code.
 public class Timekeeper {
     
     /// The default timekeeper instance
@@ -19,13 +19,13 @@ public class Timekeeper {
     /// The lock used for synchronizing access to the underlying dict.
     var lock = pthread_rwlock_t()
     
-    /// The dictionary storing all current measurements
-    var measurements = [Measurement.Name: Measurement]()
+    /// The dictionary storing all current timings
+    var timings = [Timing.Name: Timing]()
     
     /// Creates a new Timekeeper instance with the specified label.
     ///
     /// - Parameter label: The name of the timekeeper instance
-    init(_ label: String) {
+    public init(_ label: String) {
         self.label = label
         
         pthread_rwlock_init(&lock, nil)
@@ -35,13 +35,13 @@ public class Timekeeper {
         pthread_rwlock_destroy(&lock)
     }
     
-    /// Accesses the measurement with the specified name.
+    /// Accesses the timing with the specified name.
     ///
-    /// - Parameter name: The name of the measurement
-    public subscript(_ name: Measurement.Name) -> Measurement? {
+    /// - Parameter name: The name of the timing.
+    public subscript(_ name: Timing.Name) -> Timing? {
         lockRead()
         defer { unlock() }
-        return measurements[name]
+        return timings[name]
     }
 
 }
@@ -50,59 +50,58 @@ public class Timekeeper {
 
 extension Timekeeper {
     
-    /// Starts a new measurement, setting the start time to the current
-    /// system absolute time using `CFAbsoluteTimeGetCurrent`.
-    /// If there was a measurement with this name before, it is replaced
-    /// by a new one.
+    /// Starts a new timing, setting the start time to the current system
+    /// absolute time using `CFAbsoluteTimeGetCurrent`. If there
+    /// was a timing with this name before, it is replaced by a new one.
     ///
-    /// - Parameter name: The name of the measurement
-    /// - Returns: The measurement
+    /// - Parameter name: The name of the timing.
+    /// - Returns: The timing.
     @discardableResult
-    public func start(_ name: Measurement.Name) -> Measurement {
+    public func start(_ name: Timing.Name) -> Timing {
         lockWrite()
         defer { unlock() }
         
-        let measurement = Measurement(name)
+        let timing = Timing(name)
         
-        measurements[name] = measurement
+        timings[name] = timing
         
-        return measurement
+        return timing
     }
     
-    /// Adds a lap to the measurement, if one exists with the specified name.
+    /// Adds a lap to the timing, if one exists with the specified name.
     /// Otherwise, the function will just return nil.
     ///
-    /// - Parameter name: The name of the measurement
-    /// - Returns: The measurement
+    /// - Parameter name: The name of the timing.
+    /// - Returns: The timing.
     @discardableResult
-    public func lap(_ name: Measurement.Name) -> Measurement? {
+    public func lap(_ name: Timing.Name) -> Timing? {
         lockWrite()
         defer { unlock() }
         
-        guard var measurement = measurements[name] else { return nil }
+        guard var timing = timings[name] else { return nil }
         
-        measurement.laps.append(CFAbsoluteTimeGetCurrent())
+        timing.lap()
         
-        measurements[name] = measurement
+        timings[name] = timing
         
-        return measurement
+        return timing
     }
     
-    /// Sets the end time on the measurement if one exists with the specified name,
+    /// Sets the end time on the timing if one exists with the specified name,
     /// removes it from the timekeeper instance and returns it.
     ///
-    /// - Parameter name: The name of the measurement
-    /// - Returns: The meausrement
+    /// - Parameter name: The name of the timing.
+    /// - Returns: The timing.
     @discardableResult
-    public func stop(_ name: Measurement.Name) -> Measurement? {
+    public func stop(_ name: Timing.Name) -> Timing? {
         lockWrite()
         defer { unlock() }
         
-        guard var measurement = measurements.removeValue(forKey: name) else { return nil }
+        guard var timing = timings.removeValue(forKey: name) else { return nil }
         
-        measurement.end = CFAbsoluteTimeGetCurrent()
+        timing.stop()
         
-        return measurement
+        return timing
     }
     
 }
@@ -111,86 +110,74 @@ extension Timekeeper {
 
 extension Timekeeper {
     
-    /// Adds a lap to the measurement and prints it, if there exists one with the specified name.
+    /// Adds a lap to the timing and prints it, if there exists one with the specified name.
     ///
-    /// - Parameter name: The name of the measurement
-    public func lap(print name: Measurement.Name) {
-        guard let measurement = lap(name) else {
-            debugPrint("No measurement with name \(name) found.")
+    /// - Parameter name: The name of the timing.
+    public func lap(print name: Timing.Name) {
+        guard let timing = lap(name) else {
+            debugPrint("No timing with name \(name) found.")
             return
         }
         
-        print(measurement: measurement)
+        print(timing: timing)
     }
     
-    /// Sets the end time on the measurement and prints it, if there exists one with the specified name.
+    /// Sets the end time on the timing and prints it, if there exists one with the specified name.
     ///
-    /// - Parameter name: The name of the measurement
-    public func stop(print name: Measurement.Name) {
-        guard let measurement = stop(name) else {
-            debugPrint("No measurement with name \(name) found.")
+    /// - Parameter name: The name of the timing.
+    public func stop(print name: Timing.Name) {
+        guard let timing = stop(name) else {
+            debugPrint("No timing with name \(name) found.")
             return
         }
         
-        print(measurement: measurement)
+        print(timing: timing)
     }
     
-    private func print(measurement: Measurement) {
-        var items: [String] = [
-            "\(self)[\(measurement)]"
-        ]
-        
-        if measurement.lapTimes.count > 1, let latestLap = measurement.lapTimes.last {
-            items.append("Lap #\(measurement.lapTimes.endIndex): \(latestLap)s")
-        }
-        
-        if let totalDuration = measurement.totalDuration {
-            items.append("Total: \(totalDuration)s")
-        }
-        
-        debugPrint(items, separator: " - ")
+    private func print(timing: Timing) {
+        debugPrint("\(self)[\(timing)]")
     }
     
 }
 
-// MARK: - Stop measurements
+// MARK: - Stop timings
 
 extension Timekeeper {
     
-    /// Sets the end time on all current measurements, removes them
+    /// Sets the end time on all current timing, removes them
     /// from the timekeeper instance and returns them.
     ///
-    /// - Returns: All stopped measurements
+    /// - Returns: All stopped timing.
     @discardableResult
-    public func stopAll() -> [Measurement] {
+    public func stopAll() -> [Timing] {
         lockWrite()
         defer { unlock() }
         
         let time = CFAbsoluteTimeGetCurrent()
         
-        let measurements = measurements.values.map({ measurement -> Measurement in
-            var value = measurement
+        let timing = timings.values.map({ timing -> Timing in
+            var value = timing
             value.end = time
             return value
         })
         
-        self.measurements.removeAll()
+        self.timings.removeAll()
         
-        return measurements
+        return timing
     }
     
-    /// Sets the end time on all current measurements, removes them
+    /// Sets the end time on all current timings, removes them
     /// from the time keeper and print all of them.
     public func stopAllPrint() {
-        stopAll().forEach { print(measurement: $0) }
+        stopAll().forEach { print(timing: $0) }
     }
     
-    /// Remove all current measurements from the timekeeper.
+    /// Remove all current timings from the timekeeper.
     public func clear() {
         lockWrite()
         defer { unlock() }
         
-        self.measurements.removeAll()
+        self.timings.removeAll()
     }
     
 }

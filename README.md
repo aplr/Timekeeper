@@ -28,7 +28,7 @@ dependencies: [
 ```swift
 import Timekeeper
 
-// Start a new measurement
+// Start a new timing
 Timekeeper.shared.start("measurement")
 
 // Print the elapsed time since start
@@ -37,18 +37,18 @@ Timekeeper.shared.lap(print: "measurement")
 // Print the elapsed time since the last lap
 Timekeeper.shared.lap(print: "measurement")
 
-// Print the elapsed time since the last lap and start and clears the measurement
+// Print the elapsed time since the last lap and start and clears the timing
 Timekeeper.shared.stop(print: "measurement")
 ```
 
 ```swift
-// Start a new measurement
+// Start a new timing
 Timekeeper.shared.start("measurement")
 
-// Add a new lap and return the measurement
+// Add a new lap and return the timing
 let measurement = Timekeeper.shared.lap("measurement")
 
-// Stop the timer and return the measurement
+// Stop the timer and return the timing
 let measurement = Timekeeper.shared.stop("measurement")
 ```
 

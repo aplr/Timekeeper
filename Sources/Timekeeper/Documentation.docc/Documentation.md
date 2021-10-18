@@ -1,10 +1,28 @@
 # ``Timekeeper``
 
-Timekeeper is an easy-to-use time measurement library written in Swift, with support for iOS, tvOS, watchOS and macOS.
+Timekeeper is an easy-to-use timing library written in Swift, with support for iOS, tvOS, watchOS and macOS.
 
 ## Overview
 
+Timekeeper makes it relly easy to measure timings, as shown in the code snippet below.
 
+```swift
+import Timekeeper
+
+// Start a new timing
+Timekeeper.shared.start("measurement")
+
+for _ in 0..<100 {
+    operationToMeasure()
+
+    // Print the elapsed time since start or the last lap
+    Timekeeper.shared.lap(print: "measurement")
+}
+
+// Print the elapsed time since the last lap
+// as well as the total time
+Timekeeper.shared.stop(print: "measurement")
+```
 
 ## Installation
 
@@ -23,3 +41,15 @@ dependencies: [
 
 ## License
 Timekeeper is licensed under the [MIT License](https://github.com/aplr/Timekeeper/blob/main/LICENSE).
+
+## Topics
+
+### Documentation
+
+- <doc:Advanced>
+- <doc:Combine>
+
+### Timekeeper
+
+- ``Timekeeper/Timekeeper``
+- ``Timekeeper/Timing``
